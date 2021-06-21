@@ -1,0 +1,130 @@
+<!-- start tables -->
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="borders">
+
+        <div class="border" style="border-color: transparent !important;">
+          <div class="tables-top">
+              <ul class="list-unstyled">
+            
+                <li *ngFor="let table of tables, let i = index">                 
+                  <input 
+                  [ngStyle]="{'background-color': table.orders.length > 0? '#35e235' : 'white'}"
+                    *ngIf="table.position == 1"
+                    id="{{table.id}}" 
+                    type="button" 
+                    value="Table {{table.number}}" 
+                    (click)="addOrder($event)"
+                  />
+                </li>
+              </ul>
+            </div>
+        </div>       
+
+      </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="borders">
+
+            <div class="">
+              <div class="tables-right">
+                  <ul class="list-unstyled">
+                    <li *ngFor="let table of tables, let i = index">
+                      <input 
+                      [ngStyle]="{'background-color': table.orders.length > 0? '#35e235' : 'white'}"
+
+                        *ngIf="table.position == 2"
+                        id="{{table.id}}" 
+                        type="button" 
+                        value="Table {{table.number}}" 
+                        (click)="addOrder($event)"
+                      />
+                    </li>
+                  </ul>
+                </div>
+            </div>       
+    
+          </div>      
+    </div>
+
+    <div class="col-md-12">
+        <div class="borders">
+
+            <div class="">
+              <div class="tables-bottom">
+                  <ul class="list-unstyled">
+                    <li *ngFor="let table of tables, let i = index">
+                      <input 
+                      [ngStyle]="{'background-color': table.orders.length > 0? '#35e235' : 'white'}"
+
+                        *ngIf="table.position == 3"
+                        id="{{table.id}}" 
+                        type="button" 
+                        value="Table {{table.number}}" 
+                        (click)="addOrder($event)"
+                      />
+                    </li>
+                  </ul>
+                </div>
+            </div>       
+    
+          </div>      
+    </div>    
+
+    <div class="col-md-12">
+        <div class="borders">
+
+            <div class="">
+              <div class="tables-left">
+                  <ul class="list-unstyled">
+                    <li *ngFor="let table of tables, let i = index">
+                      <input 
+                      [ngStyle]="{'background-color': table.orders.length > 0? '#35e235' : 'white'}"
+
+                        *ngIf="table.position == 4"
+                        id="{{table.id}}" 
+                        type="button" 
+                        value="Table {{table.number}}" 
+                        (click)="addOrder($event)"
+                      />
+                    </li>
+                  </ul>
+                </div>
+            </div>       
+    
+          </div>      
+    </div> 
+    
+    <div class="col-md-12">
+        <div class="borders">
+
+            <div class="">
+              <div class="tables-center">
+                  <ul class="list-unstyled">
+                    <li *ngFor="let table of tables, let i = index">
+                      <input 
+                      [ngStyle]="{'background-color': table.orders.length > 0? '#35e235' : 'white'}"
+
+                        *ngIf="table.position == 5"
+                        id="{{table.id}}" 
+                        type="button" 
+                        value="Table {{table.number}}"
+                        #table_id
+                        (click)="addOrder($event)"
+                      />
+                    </li>
+                  </ul>
+                </div>
+            </div>       
+    
+          </div>      
+    </div>    
+
+  </div>
+</div>
+
+<!-- end tables -->

@@ -1,0 +1,156 @@
+
+<div class="container">
+    <div class="row ">
+        <div class="col-md-6 ">
+            <input data-format="Y-m-d" type="date"  (change)="ServiceChanged($event)"          >
+           
+          </div>
+    <div class="col-md-6 ">
+        <li style="text-align: right;" >
+            <i class="fas fa-print" (click)="printAllOrder('BIXOLON SRP-330')"></i>
+            طباعه الكاشير
+          </li> 
+    </div>
+    </div>
+  <div class="row totalsales">
+
+  <div class="col-md-12 ">
+    
+ 
+
+  </div>
+
+<table  class="col-md-12 ">
+  <tr>
+    <th>مبيعات</th>
+    <th>{{alltotal  | number : '1.2-2' }}</th>
+  </tr>
+  <tr class="sumkitchen">
+    <td>خدمة</td>
+    <td>{{services  | number : '1.2-2' }}</td>
+  </tr>
+  <tr class="sumkitchen">
+    <td>ضريبة</td>
+    <td>{{taxes  | number : '1.2-2'}}</td>
+  </tr>
+  <tr class="sumkitchen">
+    <td>مبيعات المطبخ</td>
+    <td>{{locationsSum()  | number : '1.2-2'}}</td>
+  </tr>
+  <tr class="sumkitchen">
+    <td (click)="showProducts()">مصاريف </td>
+    <td>{{expenses  | number : '1.2-2'}}</td>
+  </tr>
+  <tr class="sumkitchen">
+    <td (click)="showProducts()" >السلف</td>
+    <td>{{staffpayments  | number : '1.2-2'}}</td>
+  </tr>
+  <tr class="sumkitchen">
+    <td>الصافي</td>
+    <td>{{ alltotal - expenses - staffpayments  | number : '1.2-2'}}</td>
+  </tr>
+  <tr>
+    <td>خصومات</td>
+    <td>{{discount  | number : '1.2-2' }}</td>
+  </tr>
+  <tr  *ngFor="let category of categories, let i = index" class="col-md-4 cateogrysales">
+    <td *ngIf="category.item.subcategory != null && category.item != null" (click)="showProducts()"> {{category.item.subcategory.category.name}}</td>
+    <td  *ngIf="category.item.subcategory != null && category.item != null" (click)="showProducts()">  {{category.SumTotal  | number : '1.2-2'}}</td>
+
+  </tr>
+
+  <tr  *ngFor="let item of maindata.offerdetailsarray | keyvalue">
+    <td> بيع العروض في {{item.key}}</td>
+    <td> {{item.value}}</td>
+
+  </tr>
+</table>
+
+
+  </div>
+<!-- inline -->
+
+ <nz-modal [(nzVisible)]="isExpresesVisible" [nzTitle]="'اضافة وجبة'" (nzOnCancel)="handleCancelisExpresesVisible()"> 
+  <div class="table-responsive">
+      <table class="table table-striped text-center" style="direction: rtl;">
+          <thead>
+              <tr>
+                <th scope="col">صورة</th>
+                <th scope="col">الوجبة</th>
+                <th scope="col">السعر</th>
+                <th scope="col" colspan="3">الكمية</th>
+                <th scope="col">اضافة الوجبة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of Expenses; let i = index">
+                <th scope="col">
+                    <img src="{{p.photo}}" alt="product image" style="height: 50px; width: 50px; border-radius: 50%;" />
+                </th>
+                <th scope="col">{{p.name}}</th>
+                <th scope="col">{{p.price}}</th>
+                <th>
+                  <div 
+                      class="btn" 
+                      matRipple
+                      (click)="increaseOrDecreaseQuantityAdded(i, 1)"
+                      class="plus"><i nz-icon nzType="plus" nzTheme="outline"></i></div>                                
+                 </th>              
+                <th scope="col" class="quantity">{{p.itemamount}}</th>
+                <th>
+                  <div 
+                      class="btn" 
+                      matRipple
+                      *ngIf="p.itemamount > 2"
+                      (click)="increaseOrDecreaseQuantityAdded(i, -1)"><i nz-icon nzType="minus" nzTheme="outline"></i></div>                                
+                 </th>               
+                <th scope="col">
+                  <button matRipple class="btn btn-success add-pro" (click)="addNewPro(i)">
+                      <span class="show-loader d-none">                            
+                          <i nz-icon nzType="loading" nzTheme="outline" style="position: relative; top: -3px;"></i>
+                      </span>                       
+                      <span class="show-text d-block">
+                          اضافة
+                      </span>                                                             
+                  </button>                  
+                </th>
+              </tr>              
+
+              <tr *ngFor="let p of StaffPayments; let i = index">
+                <th scope="col">
+                </th>
+                <th scope="col">{{p.name}}</th>
+                <th scope="col">{{p.price}}</th>
+                <th>
+                  <div 
+                      class="btn" 
+                      matRipple
+                      (click)="increaseOrDecreaseQuantityAdded(i, 1)"
+                      class="plus"><i nz-icon nzType="plus" nzTheme="outline"></i></div>                                
+                 </th>              
+                <th scope="col" class="quantity">{{p.itemamount}}</th>
+                <th>
+                  <div 
+                      class="btn" 
+                      matRipple
+                      *ngIf="p.itemamount > 2"
+                      (click)="increaseOrDecreaseQuantityAdded(i, -1)"><i nz-icon nzType="minus" nzTheme="outline"></i></div>                                
+                 </th>               
+                <th scope="col">
+                  <button matRipple class="btn btn-success add-pro" (click)="addNewPro(i)">
+                      <span class="show-loader d-none">                            
+                          <i nz-icon nzType="loading" nzTheme="outline" style="position: relative; top: -3px;"></i>
+                      </span>                       
+                      <span class="show-text d-block">
+                          اضافة
+                      </span>                                                             
+                  </button>                  
+                </th>
+              </tr>              
+            </tbody>        
+      </table>
+  </div>
+</nz-modal>
+
+
+</div>

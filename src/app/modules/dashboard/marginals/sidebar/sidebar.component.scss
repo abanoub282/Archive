@@ -1,0 +1,16 @@
+.nav-box{
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3e4651;
+    cursor: pointer;
+    height: 130px;
+    margin-bottom: 10px;
+    transition: all .3s ease-out;
+
+    &:hover{
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+    }
+}

@@ -1,0 +1,176 @@
+<!-- start logo -->
+<div class="container">
+  <div class="logo">
+    <div class="logo-box">
+      <img src="../../assets/images/logo.png" />
+    </div>
+  </div>
+
+  <!-- end logo -->
+
+  <!-- start message -->
+
+  <div class="message">
+    <h3 class="text-center">التسجيل</h3>
+    <p class="text-center">
+      اذا كان لديك حساب بالفعل <a routerLink="/auth/login">سجل الدخول</a>
+    </p>
+  </div>
+
+  <!-- end message -->
+
+  <!-- start form -->
+
+  <div class="register-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-12 pt-5 mt-5">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input
+                placeholder="اسم المستخدم"
+                type="text"
+                formControlName="username"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+              />
+              <div
+                *ngIf="submitted && f.username.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.username.errors.required">
+                  قم بإدخال اسم المستخدم
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                placeholder="الإيميل"
+                type="text"
+                formControlName="email"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+              />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">
+                  قم بإدخال الايميل
+                </div>
+                <div *ngIf="f.email.errors.email">
+                  قم بإدخال الايميل الصحيح
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                placeholder="كلمة المرور"
+                type="password"
+                formControlName="password"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+              />
+              <div
+                *ngIf="submitted && f.password.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.password.errors.required">
+                  قم بإدخال كلمة المرور
+                </div>
+                <div *ngIf="f.password.errors.minlength">
+                  كلمة المرور الصحيحة لا تقل عن 8 رموز
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button [disabled]="loading" class="btn btn-primary">
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                التسجيل
+              </button>
+              <a (click)="cancel()" class="btn btn-link">إلغاء</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- end form field -->
+
+        <!-- start line -->
+
+        <div class="col-md-2">
+          <div class="line sm-hide"></div>
+        </div>
+
+        <!-- end line -->
+
+        <!-- start register by social media -->
+
+        <div class="col-lg-5 col-md-5 col-12 pt-5 mt-5 pb-5 ">
+          <div class="btn-container col-md-8 col-12">
+            <div class="boxes">
+              <a href="#">
+                <div class="fb-box">
+                  <span>Continue with Facebook</span>
+                  <i class="fab fa-facebook-f"></i>
+                </div>
+              </a>
+              <a href="#">
+                <div class="g-box">
+                  <span>Continue with Google</span>
+                  <img
+                    src="../../assets/images/google.png"
+                    style="width: 43px; margin-right: 20px"
+                  />
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- end register by social media -->
+
+        <!-- start place holder -->
+
+        <div class="col-md-2"></div>
+
+        <!-- end place holder -->
+      </div>
+    </div>
+  </div>
+
+  <!-- end form -->
+
+  <!--<form>
+  <div class="form-group">
+    <label for="name" class="col-form-label">الاسم</label>
+    <input type="text" class="form-control" id="name" />
+  </div>
+  <div class="form-group">
+    <label for="email" class="col-form-label">الايميل</label>
+    <input type="text" class="form-control" id="email" />
+  </div>
+  <div class="form-group">
+    <label for="phone" class="col-form-label">كلمة السر</label>
+    <input type="text" class="form-control" id="phone" />
+  </div>
+  <div class="form-group">
+    <div class="card-block">
+      <button
+        (click)="signInWithGoogle()"
+        class="btn btn-social-icon btn-google mx-1"
+      >
+        <span class="fab fa-google"></span></button
+      ><button
+        (click)="signInWithFB()"
+        class="btn btn-social-icon btn-facebook mx-1"
+      >
+        <span class="fab fa-facebook-f"></span>
+      </button>
+    </div>
+  </div>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">
+    إغلاق
+  </button>
+  <button type="button" class="btn btn-primary">سجل</button>
+</form>-->
+</div>

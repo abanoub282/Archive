@@ -1,0 +1,112 @@
+/* start general */
+
+input{
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    border: 1px solid #eee !important;
+    padding: 10px !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    color: #414673 !important;
+    width: 85px !important;
+}
+
+ul{
+    padding: 0;
+    margin-bottom: 0;
+
+    li{
+        display: inline-block;
+        margin-right: 5px;
+    }
+}
+
+/* end general */
+
+/* start border container */
+
+.borders{
+    border-radius: 5px;
+    position: relative;
+
+    .border{
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        .tables-top{
+            width: 100%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            height: 150px;
+            overflow-y: scroll;
+        }
+    }
+}
+
+/* end border container */
+
+
+.tables-right{
+    position: absolute;
+    right: 0;
+    top: 190px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    height: 150px;
+    overflow-y: scroll;
+
+    ul{
+        li{
+            display: block;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.tables-left{
+    position: absolute;
+    left: 0;
+    top: 190px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    height: 150px;
+    overflow-y: scroll;
+
+    ul{
+        li{
+            display: block;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.tables-bottom{
+    position: absolute;
+    left: 0;
+    bottom: -535px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    width: 100%;
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.tables-center{
+    position: absolute;
+    bottom: -345px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    width: 45%;
+    right: 27%;
+    height: 150px;
+    overflow-y: scroll;
+}

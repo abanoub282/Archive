@@ -1,0 +1,434 @@
+<div class="order-background" style="background-color: #fff; border-radius: 5px;">
+
+<!-- start print -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="print-options">
+        <ul class="list-unstyled text-right">
+           
+              <i class="fas fa-print" (click)="print('BIXOLON SRP-330')"></i>
+              طباعه المطبخ
+            
+            <li>
+              <i class="fas fa-print" (click)="printAllOrder('BIXOLON SRP-330')"></i>
+              طباعه الكاشير
+            </li>     
+            <i class="fas fa-print" ></i>
+           خصم
+            <input type="number"
+         
+          
+            style=
+            "
+            width: 70px; 
+            margin: auto; 
+            text-align: center; 
+            background-color: #d8d8d8;
+            "
+          
+            min="1"
+            (change) = "MakeDiscount($event)"
+     />   
+          </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row orderoptions" >
+    
+
+  <div class="col-md-4">
+    <div class="form-group">
+        <label for="country_id">وسيلة الدفع :</label>
+        <select 
+            class="form-control"
+            id="country_id" 
+            name="country_id" 
+            (change)="selectedPaymentway($event.target.value)"
+
+            required 
+            country_id 
+                          >                 
+            <option *ngFor="let c of paymentways" [value]="c.id">{{c.name}}</option>
+        </select>                
+        
+    </div>           
+</div> 
+  </div>
+</div>
+  
+<!-- end print -->
+
+<!-- start order table -->
+
+<div class="container">
+  <div class="section-background" style="padding: 20px; background-color: #e6eaed;" >
+      <div class="row">
+          <div class="col-md-12">
+            
+            <!-- start table -->
+      
+            <div class="table-responsive" style="height: 256px;">
+      
+              <table class="table text-center">
+      
+                <thead style="background-color: #d8d8d8;">
+                  <tr>                    
+                    <th>الاسم</th>
+                    <th>سعر</th>
+                    <th>وحدات</th>
+                    <th>ضريبة القيمة المضافة</th>
+                    <th *ngIf="serviceTax > -1">ضريبة خدمة</th>
+                    <th></th>
+                  </tr>
+                </thead>
+      
+                <tbody *ngIf="addItems" style="background-color: #fff">
+               
+                  <tr *ngFor="let item of addItems, let i = index" 
+                      style="cursor: pointer; border-bottom: 1px solid #f5f7f8;"  
+                      class="rowparents"                    
+                  >
+                  <div class="print-items d-none"
+                  >
+                    <td  >{{item.name}}</td>
+                    <td >{{item.price}} ج.م</td>
+                    <td  >
+                      <input type="number" value="1"  />
+                  
+                    </td>
+                  </div>
+                    <td class="print-item">{{item.name}}</td>
+                    <td>{{item.price}} ج.م</td>
+                    <td class="print-item">
+                      <input type="number"
+                            value="{{item.totalamount}}"
+                             class="form-control" 
+                             style=
+                             "
+                             width: 70px; 
+                             margin: auto; 
+                             text-align: center; 
+                             background-color: #d8d8d8;
+                             "
+                             min = "1"
+                             (change) = "updateItems($event, i)"
+                      />
+                    </td>
+                    <td>{{item.tax.percentage}} %</td>
+                    <td *ngIf="serviceTax > -1">{{item.tax.service}} %</td>
+                    <td>
+                      <button
+                        class="btn btn-warning "
+                       
+                        (click)="highlighted($event,item)"
+                        style="
+                        border-radius: 50%; 
+                        margin-left: 10px; 
+                        height: 35px;
+                        width: 35px;
+                        text-align: center;
+                        padding: 0;
+                        "
+                        >
+                        <i class="fas fa-highlighter"  style="pointer-events: none;"></i>
+                      </button> 
+                      <button 
+                        class="btn btn-danger"
+                        (click) = "removeRow($event, i)"
+                        style="
+                        border-radius: 50%; 
+                        height: 35px;
+                        width: 35px;
+                        text-align: center;
+                        padding: 0;
+                        "
+                        >
+                        <i class="fas fa-times"></i>
+                      </button>                     
+                    </td>                    
+                  </tr>                  
+                </tbody>
+      
+              </table>
+      
+            </div>
+      
+            <!-- end table -->          
+      
+          </div> 
+          
+          <!-- end order details -->
+      
+          <!-- start displaying VAT -->
+          <div *ngIf="addItems" class="col-md-3">
+            <div class="form-group text-right">
+              <label for="tax" style="font-weight: bold"> ضريبة القيمة المضافة</label>
+              <input 
+                id="tax" 
+                type="text" 
+                class="form-control" 
+                value="{{VAT  | number : '1.2-2'}}"
+                disabled 
+                />
+            </div>
+          </div>
+          <!-- end displaying VAT -->
+      
+          <!-- start displaying service tax -->
+          <div *ngIf="serviceTax > -1 && addItems" class="col-md-3">
+            <div class="form-group text-right">
+              <label for="serviceTax" style="font-weight: bold"> ضريبة خدمة</label>
+              <input 
+                id="serviceTax" 
+                type="text" 
+                class="form-control" 
+                value="{{serviceTax  | number : '1.2-2'}}"          
+                disabled 
+                />
+            </div>
+          </div> 
+          <!-- end displaying service tax -->  
+      
+          <!-- start displaying sum prices -->
+          <div *ngIf="addItems" class="col-md-3">
+            <div class="form-group text-right">
+              <label for="price" style="font-weight: bold">مبلغ اجمالي</label>
+              <input 
+                id="price" 
+                type="text" 
+                class="form-control" 
+                value="{{itemPrice | number : '1.2-2' }}"
+                disabled 
+                />
+            </div>
+          </div>  
+          <!-- end displaying sum prices -->
+      
+          <!-- start displaying total price -->
+          <div *ngIf="addItems" class="col-md-3">
+            <div class="form-group text-right">
+              <label for="total" style="font-weight: bold">المجموع</label>
+              <input 
+                id="total" 
+                type="text" 
+                class="form-control" 
+                value="{{itemTotal  | number : '1.2-2'}}"
+                disabled 
+                />
+            </div>
+          </div>  
+          <!-- end displaying total price -->
+
+          <!-- start add order -->
+      
+       
+        
+          <!-- end add order -->          
+      
+          <!-- start add order -->
+      
+          <div *ngIf="addItems.length >= 1" class="col-md-4 text-right">
+            <div class="form-group">
+              <button class="btn btn-primary" (click)="addOrder()">
+                اضافة طلب
+              </button>
+            </div>
+          </div>
+      
+          <!-- end add order -->
+      
+          <!-- start add new client -->
+      
+       
+      
+      
+    <!-- end add new client -->
+
+    <!-- start showing client info -->
+
+      <!-- start client name -->
+
+  
+      <!-- end client phone -->        
+
+    <!-- end showing client info -->
+    
+    <!-- end order details -->
+    
+    </div>
+  </div>  
+
+</div>
+  
+  <!-- end order table -->
+  
+  <!-- start lists -->
+  
+  <div class="container" style="margin-top: 20px;">
+    
+    <div class="section-background" style="padding: 20px; background-color: #e6eaed;">
+      <div class="row">
+        <div class="col-md-8">
+          ابحث بالاسم بعد اختيار القسم
+           <input 
+        
+         
+           style=
+           "
+           width: 180px; 
+           margin: auto; 
+           text-align: center; 
+           background-color: #ffffff;
+           "
+         
+           min="1"
+           #search
+           (keyup) = "searchItem(search)"
+      />  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+        
+          <!-- start categories list -->
+        
+          <div class="categories">
+        
+            <ul class="list-unstyled text-right categories">
+        
+              <li 
+             
+                  *ngFor = "let category of categories[0]; let i = index" 
+                  [class.active]="clicked === category" 
+                  (click)="clicked = category;"
+     
+                  id="{{category.id}}"
+                  (click)="getItemsByCategory(i)"
+              >
+                {{category.name}}
+        
+        
+              </li> 
+      
+              </ul>
+        
+            </div>
+      
+            <!-- end categories list -->
+        
+        </div>
+        
+        <div class="col-md-8">
+  
+          <!-- start items list -->
+        
+          <div class="items">
+              <div  class="offercontainer" *ngIf="offeritems.length > 0" >
+
+            <ul *ngFor = "let itemzz of offeritems, let x = index"     
+                 class="list-unstyled text-right" >
+       
+              <li   class="headforoffer"  >{{itemzz.subcategory.name}}</li>
+              <li  
+                *ngFor = "let itemsoffers of itemzz.subcategory.items, let i = index"               
+          
+                (click)="PutItemForSell($event, i,x)"
+                data-sub = "false" 
+                id ="{{itemsoffers.id}}"
+              >
+
+                <img  style="width: 100%;
+                            height: 100%;
+                            display: block;
+                            border-radius: 5px;pointer-events: none
+                            "
+               src="http://wokhouse.codesroots.com/img/logo.png"
+                >
+                {{itemsoffers.name}}
+        
+              </li>  
+            </ul>
+          
+          </div>
+
+            <ul class="list-unstyled text-right" *ngIf="subs.length >= 1"  >
+      
+              <li  
+                *ngFor = "let item of subs[0], let i = index"               
+          
+                (click)="getItems($event, i)"
+                data-sub = "true" 
+                id ="{{item.id}}"
+              >
+
+                <img  style="width: 100%;
+                            height: 100%;
+                            display: block;
+                            border-radius: 5px;pointer-events: none
+                            "
+               src="http://wokhouse.codesroots.com/img/logo.png"
+                >
+                {{item.name}}
+        
+              </li>  
+        
+            </ul>
+            <ul class="list-unstyled text-right" *ngIf="items.length >= 1 && offeritems.length == 0"  >
+      
+              <li  
+                *ngFor = "let item of items, let i = index"               
+                
+              
+               
+                (click)="PutItemForSell($event, i,0)"
+              
+                data-sub = "false" 
+                id ="{{item.id}}"
+              >
+
+                <img  style="width: 100%;
+                            height: 100%;
+                            display: block;
+                            border-radius: 5px;pointer-events: none
+                            "
+               src="http://wokhouse.codesroots.com/img/logo.png"
+                >
+                {{item.name}}
+        
+              </li>  
+        
+            </ul>
+          </div>
+        
+          <!-- end items list -->
+        
+          </div>
+      </div>
+
+    </div>
+
+    <!-- payment button -->
+
+    <button style="
+            margin: 20px 0; 
+            background-color: #5c9d15; 
+            color: #fff; 
+            padding: 5px;
+            width: 150px;
+            border: none;
+            border-radius: 5px;
+            "
+    >
+      دفع
+    </button>
+
+    <!-- payment button -->
+
+  </div>
+  
+  <!-- end lists -->
+
+</div>
+

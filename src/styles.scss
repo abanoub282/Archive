@@ -1,0 +1,186 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* start general */
+
+body{ 
+    background-color: #e6eaed;
+    direction: rtl; 
+}
+
+a{ text-decoration: none !important; }
+
+/* end general */
+
+/* start sidebar */
+
+.side{
+    padding: 0 5px;
+    height: 100%;
+}
+
+/* end sidebar */
+
+/* start main */
+
+.main{
+    padding: 10px;
+}
+
+/* end main */
+
+// ant
+.ant-input-prefix{
+    margin-left: 4px;
+    position: relative;
+    top: 5px;
+}
+
+.ant-pagination{width: 100%;}
+
+.ant-pagination-prev, 
+.ant-pagination-jump-prev, 
+.ant-pagination-jump-next,
+.ant-pagination-item{
+    margin-left: 22px;
+    margin-right: 0;
+}
+
+.ant-pagination-prev 
+.ant-pagination-item-link, 
+.ant-pagination-next 
+.ant-pagination-item-link{
+    transform: rotate(180deg);
+}
+
+.ant-pagination-item-link i{
+    position: relative;
+    bottom: 3px;
+}
+
+.ant-pagination-item{
+    border: 1px solid #d7d7d7;
+    display: inline-block;
+    color: #817f81;
+    border-radius: 50%;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
+}
+
+.ant-pagination-item-active{
+    font-weight: 700;
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
+    color: #2d2b2d;
+}
+
+.ant-pagination-prev:focus .ant-pagination-item-link, 
+.ant-pagination-next:focus .ant-pagination-item-link, 
+.ant-pagination-prev:hover .ant-pagination-item-link, 
+.ant-pagination-next:hover .ant-pagination-item-link,
+.ant-pagination-item:focus, 
+.ant-pagination-item:hover{
+    color: #817f81;
+    border-color: #817f81;
+}
+
+.ant-upload.ant-upload-select {
+    width: 100%;
+}
+
+.ant-spin-dot-item{background-color: #c00a27;}
+
+.ant-steps-item-process .ant-steps-item-icon{
+    background: #c00a27;
+    border-color: #c00a27;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon{
+    border-color: #c00a27; 
+    margin: 0 0 0 8px;   
+}
+
+.ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon{
+    color: #c00a27;
+}
+
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after{
+    background-color: #c00a27;
+}
+
+.ant-steps-item-container{
+    text-align: right;
+}
+
+.ant-steps-item-title{
+    padding-right: 0;
+    padding-left: 16px;
+    margin-right: 16px;
+}
+
+.ant-steps-item-title::after{
+    right: 100%;
+}
+
+.ant-select-selection-placeholder{
+    width: 80;
+    flex: inherit;
+}
+
+.ant-select-selection-item{flex: inherit;}
+
+.ant-select-selection--single .ant-select-selection__rendered{
+    margin-right: 24px;
+}
+
+.ant-select-selection-selected-value{float: right;}
+
+.ant-select-item-option-content{text-align: right;}
+
+.ant-select-search--inline .ant-select-search__field{
+    width: 100% !important;
+    margin-right: 15px;
+}
+
+.ant-modal-footer{display: none;}
+
+.ant-modal-close:focus, .ant-modal-close:hover{
+    outline: 0;
+}
+
+.ant-tabs .ant-tabs-tabpane{text-align: right;}
+
+.loader-cart .ant-spin-dot-item{background-color: #fff;}
+
+.ant-notification{z-index: 99999;}
+
+.ant-form-item-explain, .ant-form-item-extra{text-align: right;}
+
+.ant-alert-icon{
+    left: auto;
+    right: 16px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .ant-tabs-nav-wrap{
+        text-align: right;
+        direction: rtl;
+    }
+
+    .ant-tabs-nav .ant-tabs-tab{
+        margin: 0 0 0 32px;
+    }
+
+    .ant-steps-horizontal.ant-steps-label-horizontal .ant-steps-item{margin-right: 0;}
+}
+
+/* bootstrap */
+
+.table td, .table th{vertical-align: middle !important;}
+
+.navbar-light .navbar-toggler{
+    color: #fff;
+    border-color: #fff;
+    outline: none;
+}

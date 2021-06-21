@@ -1,0 +1,307 @@
+/* start global classes */
+
+.highlighted{
+    background-color: #e1e9d7 !important;
+}
+
+/* end global classes */
+.orderoptions {
+    text-align: right;
+}
+/* start print options */
+.active{
+    background-color:#efdede!important;; // Enter your color Code or name
+}
+.headforoffer{
+    height: 10px !important;width: 100%!important;
+    text-align: right!important;
+    font-size: 15px!important;
+     margin-right: 8px;;
+  }
+.print-options{
+    ul{
+        padding: 0; 
+        margin: 20px 0;       
+
+        li{
+            display: inline-block;
+            padding: 9px;
+            margin-left: 10px;
+            background-color: #4a90e2;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #4a90e2;
+            color: #fff;
+        }
+    }
+}
+
+/* end print options */
+
+/* start manage table */
+
+.manage-table{
+    padding: 0;
+
+    li{
+        margin-bottom: 10px;
+        text-align: center;
+        padding: 10px;
+        background-color: #9fa4a7;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+
+        i.red-arrow{
+            padding: 5px;
+            background-color: #ef0000;
+            border-radius: 50%;
+            display: inline-block;
+            height: 25px;
+            width: 25px;
+            line-height: 15px;
+            text-align: center;
+        }
+    }
+}
+
+/* end manage table */
+
+/* start calculator */
+
+.calculator{
+
+    .row{
+        div{
+            padding-right: 0;
+            margin-bottom: 10px; 
+        }
+    }
+
+    input[type="button"]{
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #414673;
+    }
+}
+
+/* end calculator */
+
+/* start categories */
+
+.categories{
+    height: 240px;
+    border: 1px solid #414673;
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+
+    .categories{
+        padding: 0;
+        height: 100%;
+        margin: 0;
+        overflow-y: scroll;
+
+        > li{
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+            width: 150px;
+            margin: auto;
+            border-radius: 5px;
+            background-color: #e6eaed;
+            color: #414673;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all .3s ease-out;
+
+            .subcategories{
+                position: absolute;
+                right: 0;
+                margin: 10px 0;
+                background-color: #fff;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+                border-radius: 5px;
+                width: 100%;
+                padding: 0;
+                display: none;
+
+                li{
+                    padding: 9px;
+                    transition: all .3s ease-out;
+
+                    &:hover{
+                        margin-right: 5px;
+                    }
+                }
+            }
+
+        }
+
+        li.show-sub-list{
+            > ul {
+                display: block;
+            }
+        }
+    }
+}
+
+/* end categories */
+
+/* start items */
+
+.items{
+    height: 240px;
+    border: 1px solid #414673;
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    
+    ul{
+        padding: 5px;
+        height: 100%;
+        margin: 0;
+        overflow-y: scroll;
+
+
+        li{
+            text-align: center;
+            border-radius: 5px;
+            color: #414673;
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 100px;
+            height: 65px;
+            cursor: pointer;
+        }
+    }
+ 
+}
+.offercontainer {
+    height: 100%;
+    overflow-y: scroll;
+}
+/* end items */
+
+/* start bootstrap */
+
+.form-control:disabled, .form-control[readonly]{
+    background-color: #fff;
+}
+
+/* end bootstrap */
+
+/* start client list */
+
+.client-list{
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    width: 91%;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+    z-index: 9999;
+
+    li{
+        cursor: pointer;
+        padding: 5px;
+        transition: all .3s ease-out;
+
+        &:hover{
+            background-color: #eee;
+        }
+    }
+}
+
+/* end client list */
+
+//// respict
+#invoice-POS{
+    box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+    padding:2mm;
+    margin: 0 auto;
+    width: 44mm;
+    background: #FFF;
+    
+  
+  h1{
+    font-size: 1.5em;
+    color: #222;
+  }
+  h2{font-size: .9em;}
+  h3{
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 2em;
+  }
+  p{
+    font-size: .7em;
+    color: #666;
+    line-height: 1.2em;
+  }
+   
+  #top, #mid,#bot{ /* Targets all id with 'col-' */
+    border-bottom: 1px solid #EEE;
+  }
+  
+  #top{min-height: 100px;}
+  #mid{min-height: 80px;} 
+  #bot{ min-height: 50px;}
+  
+  #top .logo{
+    //float: left;
+      height: 60px;
+      width: 60px;
+      background: url(http://michaeltruong.ca/images/logo1.png) no-repeat;
+      background-size: 60px 60px;
+  }
+  .clientlogo{
+    float: left;
+      height: 60px;
+      width: 60px;
+      background: url(http://michaeltruong.ca/images/client.jpg) no-repeat;
+      background-size: 60px 60px;
+    border-radius: 50px;
+  }
+  .info{
+    display: block;
+    //float:left;
+    margin-left: 0;
+  }
+  .title{
+    float: right;
+  }
+  .title p{text-align: right;} 
+  table{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  td{
+    //padding: 5px 0 5px 15px;
+    //border: 1px solid #EEE
+  }
+  .tabletitle{
+    //padding: 5px;
+    font-size: .5em;
+    background: #EEE;
+  }
+  .service{border-bottom: 1px solid #EEE;}
+  .item{width: 24mm;}
+  .itemtext{font-size: .5em;}
+  
+  #legalcopy{
+    margin-top: 5mm;
+  }
+
+    
+    
+  }
